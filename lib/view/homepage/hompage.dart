@@ -18,8 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<AnimatedProvider>(
-      builder: (context, value, child) {
+    // return Consumer<AnimatedProvider>(
+    //   builder: (context, value, child) {
         return Scaffold(
           body: Container(
             width: double.infinity,
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         );
-      },
-    );
+      } 
+    // );
   }
-}
+// }

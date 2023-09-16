@@ -6,8 +6,8 @@ class ColorClass {
   static const blackColor = Colors.black;
   static const pinkColor = Colors.pink;
   static const blueLightColor = Color.fromARGB(255, 66, 90, 150);
-  // static const redColor = Colors.red;
-  // static const redColor = Colors.red;
+  static const blueColor = Colors.blue;
+  static const greyColor = Colors.grey;
   // static const redColor = Colors.red;
   // static const redColor = Colors.red;
   // static const redColor = Colors.red;
