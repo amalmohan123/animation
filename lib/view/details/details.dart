@@ -1,9 +1,10 @@
 
 
+import 'package:animation/models/trip.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+  const DetailsPage({super.key, required Trip trips});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class DetailsPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: Container(
         child: Column(children: [
-          
+
         ],),
       ),
     );
