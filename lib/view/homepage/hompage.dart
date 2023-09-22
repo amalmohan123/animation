@@ -1,6 +1,7 @@
 import 'package:animation/view/widgets/triplist.dart';
 import 'package:flutter/material.dart';
 import '../widgets/screentitles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -29,13 +30,13 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 35),
-            const SizedBox(
+            const SizedBox(height: 10),
+            SizedBox(
               height: 160,
-              child: ScreenTitle(text: "YoYo Trips"),
+              child: ScreenTitle(text: AppLocalizations.of(context).textTitle),
             ),
-            const SizedBox(height: 20),
-            Flexible(
+            const SizedBox(height: 30),
+            const Flexible(
               child: TripList(),
             )
           ],

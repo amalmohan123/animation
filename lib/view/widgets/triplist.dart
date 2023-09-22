@@ -11,12 +11,15 @@ class TripList extends StatefulWidget {
 
 class _TripListState extends State<TripList> {
   final List<Widget> _tripTiles = [];
-  final GlobalKey _listKey = GlobalKey();
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
   @override
   void initState() {
     super.initState();
-    _addTrips();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _addTrips();
+    });
+    // _addTrips();
   }
 
   void _addTrips() {
@@ -24,15 +27,33 @@ class _TripListState extends State<TripList> {
 
     List<Trip> trips = [
       Trip(
+        title: 'Australia',
+        price: '7500',
+        nights: '7',
+        img: 'images/aus.jpg',
+      ),
+      Trip(
           title: 'Paris',
           price: '7000',
           nights: '3',
           img: 'images/eifeltower_generated.jpg'),
       Trip(
+        title: 'Singapor',
+        price: '1800',
+        nights: '4',
+        img: 'images/singa.jpg',
+      ),
+      Trip(
           title: 'Malaysia',
           price: '1500',
           nights: '5',
           img: 'images/malaysia.jpg'),
+      Trip(
+        title: 'Maldives',
+        price: '1000',
+        nights: '3',
+        img: 'images/maldives.jpg',
+      ),
       Trip(
           title: 'SriLanka',
           price: '950',
@@ -40,33 +61,40 @@ class _TripListState extends State<TripList> {
           img: 'images/srilanka1.jpg'),
       Trip(
         title: 'Goa',
-        price: '400',
+        price: '350',
         nights: '4',
         img: 'images/goa.jpg',
       ),
     ];
 
+    Future ft = Future(() {});
     for (var trip in trips) {
-      _tripTiles.add(_buildTile(trip));
+      ft = ft.then((_) {
+        return Future.delayed(const Duration(milliseconds: 200), () {
+          _tripTiles.add(_buildTile(trip));
+          _listKey.currentState?.insertItem(_tripTiles.length - 1);
+        });
+      });
     }
   }
 
   Widget _buildTile(Trip trip) {
-    return ListTile(      
+    return ListTile(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailsPage(trips: trip),
+            builder: (context) => DetailsPage(
+              trip: trip,
+            ),
           ),
-
         );
-          // Navigator.pushNamed(context,"/DetailsPage") ;
+        // Navigator.pushNamed(context,"/DetailsPage") ;
       },
       contentPadding: const EdgeInsets.all(25),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:[
+        children: [
           Text(
             '${trip.nights} nights',
             style: const TextStyle(
@@ -78,18 +106,20 @@ class _TripListState extends State<TripList> {
           Text(
             trip.title,
             style: const TextStyle(
-              fontSize: 20,
-              color: Color.fromARGB(255, 16, 134, 232),
-              fontWeight: FontWeight.bold
-            ),
+                fontSize: 20,
+                color: Color.fromARGB(255, 16, 134, 232),
+                fontWeight: FontWeight.bold),
           ),
         ],
       ),
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: Image.asset(
-          '${trip.img}',
-          height: 50.0,
+        child: Hero(
+          tag: "location-img-${trip.img}",
+          child: Image.asset(
+            '${trip.img}',
+            height: 50.0,
+          ),
         ),
       ),
       trailing: Text(
@@ -99,13 +129,19 @@ class _TripListState extends State<TripList> {
     );
   }
 
+  Tween<Offset> offset =
+      Tween(begin: const Offset(1, 0), end: const Offset(0, 0));
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return AnimatedList(
         key: _listKey,
-        itemCount: _tripTiles.length,
-        itemBuilder: (context, index) {
-          return _tripTiles[index];
+        initialItemCount: _tripTiles.length,
+        itemBuilder: (context, index, Animation) {
+          return SlideTransition(
+            child: _tripTiles[index],
+            position: Animation.drive(offset),
+          );
         });
   }
 }
