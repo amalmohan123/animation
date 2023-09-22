@@ -23,7 +23,6 @@ class ScreenTitle extends StatelessWidget {
         
         style: const TextStyle(
             fontSize: 28,
-          
             color:ColorClass.blueLightColor,
             fontWeight: FontWeight.w900),
       ),

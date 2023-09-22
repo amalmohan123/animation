@@ -1,6 +1,8 @@
 import 'package:animation/models/trip.dart';
 import 'package:animation/view/details/details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TripList extends StatefulWidget {
   const TripList({super.key});
@@ -27,40 +29,40 @@ class _TripListState extends State<TripList> {
 
     List<Trip> trips = [
       Trip(
-        title: 'Australia',
+        title: AppLocalizations.of(context).country1,
         price: '7500',
         nights: '7',
         img: 'images/aus.jpg',
       ),
       Trip(
-          title: 'Paris',
+          title: AppLocalizations.of(context).country2,
           price: '7000',
           nights: '3',
           img: 'images/eifeltower_generated.jpg'),
       Trip(
-        title: 'Singapor',
+        title: AppLocalizations.of(context).country3,
         price: '1800',
         nights: '4',
         img: 'images/singa.jpg',
       ),
       Trip(
-          title: 'Malaysia',
+          title: AppLocalizations.of(context).country4,
           price: '1500',
           nights: '5',
           img: 'images/malaysia.jpg'),
       Trip(
-        title: 'Maldives',
+        title: AppLocalizations.of(context).country5,
         price: '1000',
         nights: '3',
         img: 'images/maldives.jpg',
       ),
       Trip(
-          title: 'SriLanka',
+          title: AppLocalizations.of(context).country6,
           price: '950',
           nights: '2',
           img: 'images/srilanka1.jpg'),
       Trip(
-        title: 'Goa',
+        title: AppLocalizations.of(context).country6,
         price: '350',
         nights: '4',
         img: 'images/goa.jpg',
