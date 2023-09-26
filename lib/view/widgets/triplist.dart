@@ -1,7 +1,7 @@
 import 'package:animation/models/trip.dart';
 import 'package:animation/view/details/details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TripList extends StatefulWidget {
@@ -21,7 +21,6 @@ class _TripListState extends State<TripList> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _addTrips();
     });
-    // _addTrips();
   }
 
   void _addTrips() {

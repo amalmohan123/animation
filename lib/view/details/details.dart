@@ -1,5 +1,4 @@
 import 'package:animation/models/trip.dart';
-import 'package:animation/view/widgets/drawer_butt.dart';
 import 'package:animation/view/widgets/heart.dart';
 import 'package:animation/view/widgets/lipsum.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +43,10 @@ class DetailsPage extends StatelessWidget {
             ),
             trailing: const HeartButton(),
           ),
-          const Padding(padding: EdgeInsets.all(18), child: Lipsim()),
+          const Padding(
+            padding: EdgeInsets.all(18),
+            child: Lipsim(),
+          ),
         ],
       ),
     );

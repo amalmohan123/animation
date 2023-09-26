@@ -1,18 +1,15 @@
 import 'package:animation/controller/animated_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
-import '../homepage/hompage.dart';
+import 'package:provider/provider.dart';
 
 // String? chageLocal;
 
 class DrawButton extends StatelessWidget {
   DrawButton({super.key});
 
-  Locale appLocale = const Locale("en");
 
+  Locale appLocale = const Locale("en");
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -34,7 +31,7 @@ class DrawButton extends StatelessWidget {
               ),
             ),
             onTap: () {
-              changeLocale(context,Locale('en'));
+              changeLocale(context,const Locale('en'));
             },
           ),
           ListTile(
@@ -45,7 +42,7 @@ class DrawButton extends StatelessWidget {
               ),
             ),
             onTap: () {
-           changeLocale(context,Locale('hi'));
+              changeLocale(context,const Locale('hi'));
             },
           ),
           ListTile(
@@ -56,7 +53,7 @@ class DrawButton extends StatelessWidget {
               ),
             ),
             onTap: () {
-            changeLocale(context,Locale('es'));
+              changeLocale(context,const Locale('es'));
             },
           ),
         ],
@@ -64,8 +61,7 @@ class DrawButton extends StatelessWidget {
     );
   }
 
-  void changeLocale(BuildContext context,  Locale locale) {
-    Provider.of<LocaleProvider>(context,listen: false).changeLocale(locale);
+  void changeLocale(BuildContext context, Locale locale) {
+    Provider.of<LocaleProvider>(context, listen: false).changeLocale(locale);
   }
 }
-

@@ -38,11 +38,13 @@ class _HeartButtonState extends State<HeartButton>
     ).animate(_controller);
 
     _controller.addListener(() {
-      print(_controller.value);
-      print(_colorAnimation.value);
+      // print(_controller.value);
+      _controller.value;
+      // print(_colorAnimation.value);
+    _colorAnimation.value;
     });
 
-    _controller.addStatusListener((status) {
+    _controller.addStatusListener((status) { 
       if (status == AnimationStatus.completed) {
         setState(() {
           isFav = true;
